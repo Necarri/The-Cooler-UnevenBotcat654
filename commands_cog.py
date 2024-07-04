@@ -16,7 +16,7 @@ class commands_cog(commands.Cog):
                 return await ctx.send("You aren't in a voice chat, idiot")
         if not ctx.voice_client:
              await voice_channel.connect()
-        ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/ping.mp3", **ffmpeg_options))
+        ctx.voice_client.play(discord.FFmpegPCMAudio("soundbites/ping.mp3", **ffmpeg_options))
     
     @commands.command()
     async def bruh(self, ctx):
@@ -25,7 +25,7 @@ class commands_cog(commands.Cog):
                 return await ctx.send("You aren't in a voice chat, idiot")
         if not ctx.voice_client:
             await voice_channel.connect()
-        ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/bruh.mp3", **ffmpeg_options))
+        ctx.voice_client.play(discord.FFmpegPCMAudio("soundbites/bruh.mp3", **ffmpeg_options))
 
     @commands.command()
     async def knock(self, ctx):
@@ -34,7 +34,7 @@ class commands_cog(commands.Cog):
                 return await ctx.send("You aren't in a voice chat, idiot")
         if not ctx.voice_client:
              await voice_channel.connect()
-        ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/knock.mp3", **ffmpeg_options))
+        ctx.voice_client.play(discord.FFmpegPCMAudio("soundbites/knock.mp3", **ffmpeg_options))
 
     @commands.command()
     async def lando(self, ctx):
@@ -43,7 +43,7 @@ class commands_cog(commands.Cog):
                 return await ctx.send("You aren't in a voice chat, idiot")
         if not ctx.voice_client:
              await voice_channel.connect()
-        ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/lando.mp3", **ffmpeg_options))
+        ctx.voice_client.play(discord.FFmpegPCMAudio("soundbites/lando.mp3", **ffmpeg_options))
 
     @commands.command()
     async def eggman(self, ctx):
@@ -52,7 +52,7 @@ class commands_cog(commands.Cog):
                 return await ctx.send("You aren't in a voice chat, idiot")
         if not ctx.voice_client:
              await voice_channel.connect()
-        ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/eggman.mp3", **ffmpeg_options))
+        ctx.voice_client.play(discord.FFmpegPCMAudio("soundbites/eggman.mp3", **ffmpeg_options))
     
     @commands.command()
     async def yoda(self, ctx):
@@ -61,7 +61,7 @@ class commands_cog(commands.Cog):
                 return await ctx.send("You aren't in a voice chat, idiot")
         if not ctx.voice_client:
              await voice_channel.connect()
-        ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/yoda.mp3", **ffmpeg_options))
+        ctx.voice_client.play(discord.FFmpegPCMAudio("soundbites/yoda.mp3", **ffmpeg_options))
     
     @commands.command()
     async def gay(self, ctx):
@@ -70,7 +70,7 @@ class commands_cog(commands.Cog):
                 return await ctx.send("You aren't in a voice chat, idiot")
         if not ctx.voice_client:
              await voice_channel.connect()
-        ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/gay-echo.mp3", **ffmpeg_options))
+        ctx.voice_client.play(discord.FFmpegPCMAudio("soundbites/gay-echo.mp3", **ffmpeg_options))
     
     @commands.command()
     async def sisyphus(self, ctx):
@@ -79,7 +79,7 @@ class commands_cog(commands.Cog):
                 return await ctx.send("You aren't in a voice chat, idiot")
         if not ctx.voice_client:
              await voice_channel.connect()
-        ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/sisyphus.mp3", **ffmpeg_options))
+        ctx.voice_client.play(discord.FFmpegPCMAudio("soundbites/sisyphus.mp3", **ffmpeg_options))
     
     @commands.command()
     async def soda(self, ctx):
@@ -88,7 +88,7 @@ class commands_cog(commands.Cog):
                 return await ctx.send("You aren't in a voice chat, idiot")
         if not ctx.voice_client:
              await voice_channel.connect()
-        ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/soda.mp3", **ffmpeg_options))
+        ctx.voice_client.play(discord.FFmpegPCMAudio("soundbites/soda.mp3", **ffmpeg_options))
     
     @commands.command()
     async def mj(self, ctx,):
@@ -102,27 +102,27 @@ class commands_cog(commands.Cog):
         choice = random.choice(range(0,11))
         match choice:
             case 0:
-                ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/mj/hehe.mp3", **ffmpeg_options))
+                ctx.voice_client.play(discord.FFmpegPCMAudio("soundbites/mj/hehe.mp3", **ffmpeg_options))
             case 1:
-                ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/mj/yow.mp3", **ffmpeg_options))
+                ctx.voice_client.play(discord.FFmpegPCMAudio("soundbites/mj/yow.mp3", **ffmpeg_options))
             case 2:
-                ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/mj/wow.mp3", **ffmpeg_options))
+                ctx.voice_client.play(discord.FFmpegPCMAudio("soundbites/mj/wow.mp3", **ffmpeg_options))
             case 3:
-                ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/mj/oh.mp3", **ffmpeg_options))
+                ctx.voice_client.play(discord.FFmpegPCMAudio("soundbites/mj/oh.mp3", **ffmpeg_options))
             case 4:
-                ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/mj/shamone.mp3", **ffmpeg_options))
+                ctx.voice_client.play(discord.FFmpegPCMAudio("soundbites/mj/shamone.mp3", **ffmpeg_options))
             case 5:
-                ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/mj/hoooo.mp3", **ffmpeg_options))
+                ctx.voice_client.play(discord.FFmpegPCMAudio("soundbites/mj/hoooo.mp3", **ffmpeg_options))
             case 6:
-                ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/mj/huoo.mp3", **ffmpeg_options))
+                ctx.voice_client.play(discord.FFmpegPCMAudio("soundbites/mj/huoo.mp3", **ffmpeg_options))
             case 7:
-                ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/mj/uul.mp3", **ffmpeg_options))
+                ctx.voice_client.play(discord.FFmpegPCMAudio("soundbites/mj/uul.mp3", **ffmpeg_options))
             case 8:
-                ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/mj/dah.mp3", **ffmpeg_options))
+                ctx.voice_client.play(discord.FFmpegPCMAudio("soundbites/mj/dah.mp3", **ffmpeg_options))
             case 9:
-                ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/mj/aow.mp3", **ffmpeg_options))
+                ctx.voice_client.play(discord.FFmpegPCMAudio("soundbites/mj/aow.mp3", **ffmpeg_options))
             case 10:
-                ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/mj/heeee.mp3", **ffmpeg_options))
+                ctx.voice_client.play(discord.FFmpegPCMAudio("soundbites/mj/heeee.mp3", **ffmpeg_options))
             #case _:
             #    ctx.send("What")
     
@@ -135,7 +135,7 @@ class commands_cog(commands.Cog):
         if not ctx.voice_client:
              await voice_channel.connect()
         
-        ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/letsgo.mp3", **ffmpeg_options))
+        ctx.voice_client.play(discord.FFmpegPCMAudio("soundbites/letsgo.mp3", **ffmpeg_options))
         sleep(0.5)
         await ctx.send("3...")
         sleep(1)
@@ -144,7 +144,7 @@ class commands_cog(commands.Cog):
         await ctx.send("1...")
         sleep(1)
         await ctx.send("https://tenor.com/view/shocking-jar-jar-star-wars-cringe-gif-13662647")
-        ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/go.mp3", **ffmpeg_options))
+        ctx.voice_client.play(discord.FFmpegPCMAudio("soundbites/go.mp3", **ffmpeg_options))
     
     @commands.command()
     async def dug(self, ctx):
