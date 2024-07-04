@@ -98,33 +98,24 @@ class commands_cog(commands.Cog):
         if not ctx.voice_client:
              await voice_channel.connect()
         
+        mj_sound_names = [
+            'hehe',
+            'yow',
+            'wow',
+            'oh',
+            'shamone',
+            'hoooo',
+            'huoo',
+            'uul',
+            'dah',
+            'aow',
+            'heeee'
+        ]
+
         #I want to try making all 11 in a row so it won't start again until every one has been played
-        choice = random.choice(range(0,11))
-        match choice:
-            case 0:
-                ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/mj/hehe.mp3", **ffmpeg_options))
-            case 1:
-                ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/mj/yow.mp3", **ffmpeg_options))
-            case 2:
-                ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/mj/wow.mp3", **ffmpeg_options))
-            case 3:
-                ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/mj/oh.mp3", **ffmpeg_options))
-            case 4:
-                ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/mj/shamone.mp3", **ffmpeg_options))
-            case 5:
-                ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/mj/hoooo.mp3", **ffmpeg_options))
-            case 6:
-                ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/mj/huoo.mp3", **ffmpeg_options))
-            case 7:
-                ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/mj/uul.mp3", **ffmpeg_options))
-            case 8:
-                ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/mj/dah.mp3", **ffmpeg_options))
-            case 9:
-                ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/mj/aow.mp3", **ffmpeg_options))
-            case 10:
-                ctx.voice_client.play(discord.FFmpegPCMAudio("/home/pi/soundbites/mj/heeee.mp3", **ffmpeg_options))
-            #case _:
-            #    ctx.send("What")
+        choice = random.choice(mj_sound_names)
+        ctx.voice_client.play(discord.FFmpegPCMAudio(f"soundbites/mj/{choice}.mp3", **ffmpeg_options))
+
     
     
     @commands.command()
