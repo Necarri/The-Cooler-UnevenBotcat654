@@ -6,7 +6,8 @@ from dotenv import load_dotenv
 import http.client as httplib
 import yt_dlp
 import asyncio
-from commands_cog import commands_cog
+from memes_cog import Memes
+from soundboard_cog import Soundboard
 
 load_dotenv()
 intents = discord.Intents.default()
@@ -30,7 +31,7 @@ while (1<2):
 conn.close()
 print('Connected to internet')
 
-class MusicBot(commands.Cog):
+class Music(commands.Cog):
     def __init__(self, client):
         self.client = client
         self.queue = []
@@ -69,7 +70,8 @@ class MusicBot(commands.Cog):
         voice_channel = ctx.author.voice.channel if ctx.author.voice else None
         await ctx.send("sop\nhttps://tenor.com/view/sop-sign-simpsons-gif-9846341633978797724")
         try:
-            await voice_channel.disconnect()
+            ctx.voice_client.stop()
+            await ctx.voice_client.disconnect()
         except Exception as e:
             print(e)
    
@@ -92,8 +94,9 @@ class MusicBot(commands.Cog):
         print(f'{client.user} is now ballin\'')
 
 async def main():
-    await client.add_cog(MusicBot(client))
-    await client.add_cog(commands_cog(client))
+    await client.add_cog(Music(client))
+    await client.add_cog(Memes(client))
+    await client.add_cog(Soundboard(client))
     await client.start(os.getenv('TOKEN'))
 
 asyncio.run(main())
