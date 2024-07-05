@@ -50,9 +50,46 @@ class commands_cog(commands.Cog):
         await self.play_mp3(ctx, "sisyphus.mp3")
     
     @commands.command()
+    async def fart(self, ctx):
+        await self.play_mp3(ctx, "fart_reverb.mp3")
+    
+    @commands.command()
+    async def huh(self, ctx):
+        await self.play_mp3(ctx, "huh.mp3")
+    
+    @commands.command()
+    async def ig88(self, ctx):
+        await self.play_mp3(ctx, "ig88.mp3")
+    
+    @commands.command()
+    async def come(self, ctx):
+        await self.play_mp3(ctx, "imgonnacome.mp3")
+    
+    @commands.command()
+    async def meow(self, ctx):
+        await self.play_mp3(ctx, "meowrgh.mp3")
+    
+    @commands.command()
+    async def q(self, ctx):
+        await self.play_mp3(ctx, "quickerthanthat.mp3")
+        await ctx.send("https://tenor.com/view/allstate-gotta-be-quicker-than-that-fishing-gif-11607646")
+
+    @commands.command()
+    async def caseoh(self, ctx):
+        await self.play_mp3(ctx, "shrimpalfredo.mp3")
+    
+    @commands.command()
+    async def rock(self, ctx):
+        await self.play_mp3(ctx, "shutupb.mp3")
+
+    @commands.command()
     async def soda(self, ctx):
         await self.play_mp3(ctx, "soda.mp3")
     
+    @commands.command()
+    async def how(self, ctx):
+        await self.play_mp3(ctx, "what.mp3")
+
     @commands.command()
     async def mj(self, ctx):
         #I want to try making all 11 in a row so it won't start again until every one has been played
