@@ -9,6 +9,7 @@ class Soundboard(commands.Cog):
         self.bot = bot
     
     async def play_mp3(self, ctx, file):
+        await self.ltg(ctx)
         voice_channel = ctx.author.voice.channel if ctx.author.voice else None
         if not voice_channel:
             return await ctx.send("You aren't in a voice chat, idiot")
@@ -17,9 +18,21 @@ class Soundboard(commands.Cog):
         
         ctx.voice_client.play(discord.FFmpegPCMAudio(f"./soundbites/{file}", **ffmpeg_options))
 
+    
+    async def ltg(self, ctx):
+        try:
+            if random.randrange(0,100) < 2:
+                await self.play_mp3(ctx, "ltg.mp3")
+                await ctx.send("kill yourself")
+                await ctx.send("https://tenor.com/view/low-tier-god-awesome-mario-twerking-gif-23644561")
+                return
+        except Exception as e:
+                print(e)
+    
     @commands.command(name="sbping", description="Discord notification sound")
     async def sbping(self, ctx):
         await self.play_mp3(ctx, "ping.mp3")
+        
             
     @commands.command(name="bruh", description="Bruh")
     async def bruh(self, ctx):

@@ -1,5 +1,4 @@
-import discord
-import os
+import discord, os, random
 from discord.ext import commands
 from time import sleep
 from dotenv import load_dotenv
@@ -34,8 +33,8 @@ print('Connected to internet')
 class Music(commands.Cog):
     def __init__(self, client):
         self.client = client
-        self.queue = []
-    
+        self.queue = []        
+
     @commands.command(name="play", description="play a song by search or pasting a link directly")
     async def play(self, ctx, *, search):
         voice_channel = ctx.author.voice.channel if ctx.author.voice else None
@@ -64,7 +63,7 @@ class Music(commands.Cog):
             await ctx.send(f'Now playing **{title}**')
         elif not ctx.voice_client.is_playing():
             await ctx.send("Queue is empty")
-    
+
     @commands.command(name="sop", description="sop")
     async def sop(self, ctx):
         voice_channel = ctx.author.voice.channel if ctx.author.voice else None
@@ -77,10 +76,7 @@ class Music(commands.Cog):
    
     @commands.command(name="kill", description="Remove bot from voice channel")
     async def kill(self, ctx):
-        try:
-            del ctx.voice_client
-        except Exception as e:
-            print(e)
+        ctx.voice_client.stop()
     
     @commands.command(name="skip", description="Skips current song in queue")
     async def skip(self, ctx):
