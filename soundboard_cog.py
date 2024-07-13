@@ -11,7 +11,7 @@ class Soundboard(commands.Cog):
     async def play_mp3(self, ctx, file):
         await self.ltg(ctx)
         voice_channel = ctx.author.voice.channel if ctx.author.voice else None
-        if not voice_channel:
+        if not voice_channel and not ctx.voice_client:
             return await ctx.send("You aren't in a voice chat, idiot")
         if not ctx.voice_client:
             await voice_channel.connect()
@@ -21,7 +21,7 @@ class Soundboard(commands.Cog):
     
     async def ltg(self, ctx):
         try:
-            if random.randrange(0,100) < 2:
+            if random.randrange(0,200) == 1:
                 await self.play_mp3(ctx, "ltg.mp3")
                 await ctx.send("kill yourself")
                 await ctx.send("https://tenor.com/view/low-tier-god-awesome-mario-twerking-gif-23644561")
@@ -105,7 +105,6 @@ class Soundboard(commands.Cog):
 
     @commands.command(description="Randomly selects a Michael Jackson noise")
     async def mj(self, ctx):
-        #I want to try making all 11 in a row so it won't start again until every one has been played
         mj_sound_names = [
             'hehe',
             'yow',
@@ -119,11 +118,11 @@ class Soundboard(commands.Cog):
             'aow',
             'heeee'
         ]
-
+            #Needs a way to not roll the same thing twice.
         choice = random.choice(mj_sound_names)
         await self.play_mp3(ctx, f"mj/{choice}.mp3")
         
-    @commands.command(description="Counts down from 3, stars at LET\'S GO")
+    @commands.command(description="Counts down from 3, stars at drop after LET\'S GO")
     async def countdown(self, ctx):
         await self.play_mp3(ctx, "letsgo.mp3")
         sleep(0.5)
@@ -134,5 +133,4 @@ class Soundboard(commands.Cog):
         await ctx.send("1...")
         sleep(1)
         await ctx.send("https://tenor.com/view/shocking-jar-jar-star-wars-cringe-gif-13662647")
-        await self.play_mp3(ctx, "go.mp3")
         

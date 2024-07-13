@@ -1,12 +1,13 @@
-import discord, os, random
+import discord, os, random, yt_dlp, asyncio
 from discord.ext import commands
 from time import sleep
 from dotenv import load_dotenv
 import http.client as httplib
-import yt_dlp
-import asyncio
+import _string
 from memes_cog import Memes
 from soundboard_cog import Soundboard
+#from helper_cog import Helper
+#from roaster_cog import Roaster
 
 load_dotenv()
 intents = discord.Intents.default()
@@ -18,14 +19,14 @@ client = commands.Bot(command_prefix="!", activity=discord.Game(name='type !help
 ffmpeg_options = {'options': '-vn'}
 ydl_options = {'format' : 'bestaudio', 'noplaylist' : True}
 
+    #Connect to internet before starting the bot
 while (1<2):
     conn = httplib.HTTPSConnection("8.8.8.8", timeout=5)
     try:
         conn.request("HEAD", "/")
         break
     except Exception:
-        #print ("Sugma")
-        sleep(1)
+        sleep(0.5)
         continue
 conn.close()
 print('Connected to internet')
@@ -38,20 +39,20 @@ class Music(commands.Cog):
     @commands.command(name="play", description="play a song by search or pasting a link directly")
     async def play(self, ctx, *, search):
         voice_channel = ctx.author.voice.channel if ctx.author.voice else None
-        if not voice_channel:
+        if not voice_channel and not ctx.voice_client:
             return await ctx.send("You aren't in a voice chat, idiot")
         if not ctx.voice_client:
             await voice_channel.connect()
 
         async with ctx.typing():
              with yt_dlp.YoutubeDL(ydl_options) as ydl:
-                info = ydl.extract_info(f"ytsearch:{search}", download=False)
+                info = ydl.extract_info(f"ytsearch:{search.split('&')[0]}", download=False)
                 if 'entries' in info:
                     info = info['entries'][0]
                     url = info['url']
                     title = info['title']
                     self.queue.append((url, title))
-                    await ctx.send(f'Added **{title}**)')
+                    await ctx.send(f'Added **{title}**')
         if not ctx.voice_client.is_playing():
             await self.play_next(ctx)
 
@@ -66,16 +67,16 @@ class Music(commands.Cog):
 
     @commands.command(name="sop", description="sop")
     async def sop(self, ctx):
-        voice_channel = ctx.author.voice.channel if ctx.author.voice else None
-        await ctx.send("sop\nhttps://tenor.com/view/sop-sign-simpsons-gif-9846341633978797724")
+        await ctx.send("sop")
+        await ctx.send("https://tenor.com/view/sop-sign-simpsons-gif-9846341633978797724")
         try:
             ctx.voice_client.stop()
             await ctx.voice_client.disconnect()
         except Exception as e:
             print(e)
    
-    @commands.command(name="kill", description="Remove bot from voice channel")
-    async def kill(self, ctx):
+    @commands.command(name="pause", description="Stop whatever the bot is currently playing")
+    async def pause(self, ctx):
         ctx.voice_client.stop()
     
     @commands.command(name="skip", description="Skips current song in queue")
@@ -93,6 +94,8 @@ async def main():
     await client.add_cog(Music(client))
     await client.add_cog(Memes(client))
     await client.add_cog(Soundboard(client))
+    #await client.add_cog(Helper(client))
+    #await client.add_cog(Roaster(client))
     await client.start(os.getenv('TOKEN'))
 
 asyncio.run(main())
