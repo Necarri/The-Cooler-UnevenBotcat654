@@ -1,10 +1,14 @@
 import discord, random
 from time import sleep
+import asyncio
 from discord.ext import commands
 
 ffmpeg_options = {'options': '-vn'}
 
 class Soundboard(commands.Cog):
+
+    is_hungry = False
+
     def __init__(self, bot):
         self.bot = bot
     
@@ -27,10 +31,24 @@ class Soundboard(commands.Cog):
                 await ctx.send("https://tenor.com/view/low-tier-god-awesome-mario-twerking-gif-23644561")
                 return
         except Exception as e:
-                print(e)
-    
-    @commands.command(name="sbping", description="Discord notification sound")
-    async def sbping(self, ctx):
+                print(e) 
+
+    @commands.command(name="hboxmode", description="Toggle Hbox popoff mode")
+    async def hboxmode(self, ctx):
+        await ctx.send("Popoff mode enabled")
+
+        self.is_hungry = not self.is_hungry
+        if self.is_hungry:
+            while (1<2):
+                await self.hbox(ctx)
+                x = random.randrange(150,600)
+                await asyncio.sleep(x)
+                if not self.is_hungry:
+                    return
+        await ctx.send("Popoff mode disabled")
+
+    @commands.command(name="badoop", description="Discord notification sound")
+    async def badoop(self, ctx):
         await self.play_mp3(ctx, "ping.mp3")
         
             
@@ -102,6 +120,10 @@ class Soundboard(commands.Cog):
     @commands.command(description="Earthbound \"what, how\" meme")
     async def how(self, ctx):
         await self.play_mp3(ctx, "what.mp3")
+    
+    @commands.command(description="Hatsune Miku does NOT talk to british people")
+    async def ohno(self, ctx):
+        await self.play_mp3(ctx, "no.mp3")
 
     @commands.command(description="Randomly selects a Michael Jackson noise")
     async def mj(self, ctx):
@@ -121,7 +143,36 @@ class Soundboard(commands.Cog):
             #Needs a way to not roll the same thing twice.
         choice = random.choice(mj_sound_names)
         await self.play_mp3(ctx, f"mj/{choice}.mp3")
-        
+    
+    @commands.command(description="Randomly selects an hbox popoff")
+    async def hbox(self, ctx):
+        hb_sound_names = [
+            'AAAAAAAAAAA su',
+            'ahh i got it i effing hit it',
+            'calm yourself down juan',
+            'i did it i effing did it',
+            'omg oh my no effing way',
+            'omg ok ok ok',
+            'OOHh mY gOOOD',
+            'remember my name remember the effing name dont taunt me',
+            'WAAAAAAAAAaaaaaaaaaaaaaaaaaauuuuuuuuuuuuuuu',
+            'wait omg aaAAAA',
+            'what are you gonna do',
+            'what the eff',
+            'YAAAAAAAAASS passes out',
+            'YAAAAAS WAAAAUuUuuuuu',
+            'yeaaas yeas motherfricker',
+            'yes eff yes yes yes WOOO',
+            'yes eff you camping yellow eff',
+            'yes f that character',
+            'yes yeah yes yeaaaaaah eff'
+        ]
+            #Needs a way to not roll the same thing twice.
+        choice = random.choice(hb_sound_names)
+        await self.play_mp3(ctx, f"hbox/{choice}.mp3")   
+    
+    
+
     @commands.command(description="Counts down from 3, stars at drop after LET\'S GO")
     async def countdown(self, ctx):
         await self.play_mp3(ctx, "letsgo.mp3")
